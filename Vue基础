@@ -1,0 +1,46 @@
+<div id="vm">
+    {{text}}//插入文本
+    {{html1}}//插入HTML
+    {{date|formatDate()}}//过滤器
+    <div v-bind:class="classname"></div>//绑定动态class
+    <button v-on:click = "count">{{countnum}}</button>//绑定事件
+</div>
+<script>
+    var plusDate =function (value) {
+     	return value<10? '0'+value : value
+ 	}
+    var vm=new vue({
+        el:"#vm",
+        data:{
+            text:'学习Vue.js',
+            html1:'<span>html1</span>',
+            className :'transRed',
+        },
+        methods:{
+            count: function(){
+                this.countnum = this.countnum +1;
+            }
+        },
+        filters:{
+            //这里的value就是需要过滤的数据
+            formatDate: function(value,a,b){
+                //将字符串转化为date类型
+                var date = new Date(value);
+                var year = date.getFullYear();//年
+                var month = plusDate(date.getMonth()+1);//月
+                var day = plusDate(date.getDate());//日
+                var hours = plusDate(date.getHours());
+                var min = plusDate(date.getMinutes());
+                var sec = plusDate(date.getSeconds());
+            //将整理好的数据返回
+            return year +'年'+month +'月'+day +'号'+hours+'时'+min+'分'+sec+'秒';
+            }
+        },
+        mounted:function(){
+            var _this=this;
+            this.timer=setInterval(function(){
+                _this.date=new Date();
+            })
+        }
+	})
+</script>
