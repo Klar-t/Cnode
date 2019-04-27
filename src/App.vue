@@ -1,28 +1,36 @@
-<template>
+ <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <Header></Header>
+    <div class="main">
+    	<router-view name="main"></router-view>
+    </div>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
+import Header from './components/Header'
+import Postlist from './components/Postlist'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data:function(){
+  	return {
+  		
+  	}
+  },
+  components:{
+  	Header,Postlist
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.main{
+	width: 80%;
+	margin: 0 auto;
 }
+#app{
+	background-color: #e1e1e1;
+}
+ul,li{ padding:0;margin:0;list-style:none}
 </style>
