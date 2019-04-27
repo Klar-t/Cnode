@@ -1,5 +1,6 @@
 <template>
 	<div class="article">
+		123
 		<div class="loading" v-if="isLoading">
 			<img src="../assets/loading.gif"/>
 		</div>
@@ -42,21 +43,20 @@
 		},
 		methods:{
 			getArticleData(){
-				console.log(123);
 				this.$http.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
 				.then(res=>{
-					if(res.data.success===true){
-						isLoading:false,
+					if(res.data.success == true){
+						this.isLoading =false;
 						this.post=res.data.data;
 					}
 				})
-				.catch(res=>{
-					console.log(err);
+				.catch(function(err){
+					console.log(err)
 				})
 			}
 		},
 		beforeMount(){
-			this.isloading=true;
+			this.isLoading =true;
 			this.getArticleData();
 		}
 		
