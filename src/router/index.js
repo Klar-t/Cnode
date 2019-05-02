@@ -4,7 +4,8 @@ import Vue from 'vue'
 
 import Postlist from '../components/Postlist'
 import Article from '../components/Article'
-
+import Userinfo from '../components/UserInfo'
+import SlideBar from '../components/SlideBar'
 
 Vue.use(router)
 
@@ -22,9 +23,17 @@ export default new  router({
 	},
 	{
 		name:'post_content',
-		path:'/topic/:id',
+		path:'/topic/:id&author=:name',
 		components:{
-			mian:Article
+			main:Article,
+			Slidebar:SlideBar
+		}
+	},
+	{
+		name:'user_info',
+		path:'/userinfo/:name',
+		components:{
+			main:Userinfo
 		}
 	}
 	

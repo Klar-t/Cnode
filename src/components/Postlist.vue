@@ -34,7 +34,8 @@
 					<router-link :to="{
 						name:'post_content',
 						params:{
-							id:post.id
+							id:post.id,
+							name:post.author.loginname
 						}
 					}">
 						<span>
@@ -46,13 +47,17 @@
 						{{post.last_reply_at|formatDate}}
 					</span>
 				</li>
-				
+				<li>
+					123
+					<pagination></pagination>
+				</li>
 			</ul>
 		</div>
 	</div>
 </template>
 
 <script>
+	import pagination from './Pagination'
 	export default{
 		name:"Postlist",
 		data(){
