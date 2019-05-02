@@ -9,8 +9,6 @@ import SlideBar from '../components/SlideBar'
 
 Vue.use(router)
 
-
-
 //配置路由
 export default new  router({
 	routes:[

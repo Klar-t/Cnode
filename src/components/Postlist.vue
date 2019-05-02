@@ -48,8 +48,8 @@
 					</span>
 				</li>
 				<li>
-					123
-					<pagination></pagination>
+					<!--分页-->
+					<pagination @handleList="renderList"></pagination>
 				</li>
 			</ul>
 		</div>
@@ -63,14 +63,20 @@
 		data(){
 			return{
 				isLoading:false,
-				posts:[]//代表页面的列表数组
+				posts:[],//代表页面的列表数组
+				postpage:1
 			}
 		},
+		components:{
+	       pagination
+	    },
 		methods:{
 			getData(){
 				this.$http.get('https://cnodejs.org/api/v1/topics',{
-					page:1,
-					limit:20
+					params:{
+						page:this.postpage,
+						limit:10	
+					}
 				}).then(res=>{
 					this.isLoading=false;//加载成功去除动画
 					console.log(res); 
@@ -80,7 +86,10 @@
 					 //处理返回失败的数据
 					 console.log(err)
 				})
-				
+			},
+			renderList(value){
+				this.postpage=value;
+				this.getData();
 			}
 		},
 		beforeMount(){
