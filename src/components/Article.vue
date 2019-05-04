@@ -1,5 +1,5 @@
 <template>
-	<div class="article">
+	<div class="article markdown-body">
 		<div class="loading" v-if="isLoading">
 			<img src="../assets/loading.gif"/>
 		</div>
@@ -102,7 +102,9 @@
 </script>
 
 <style>
-	@import url("../assets/markdown-github.css");
+	/*引用外部css，组件不能scoped,markdown文件使用网络文件需要在跟文件中加class：markdown-body*/
+	/*@import url("https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.min.css"); */
+	@import url("../assets/githubmarkdown.css");
 	.topbar {
     padding: 10px;
     background-color: #f6f6f6;
