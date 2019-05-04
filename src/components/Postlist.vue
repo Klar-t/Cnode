@@ -79,9 +79,7 @@
 					}
 				}).then(res=>{
 					this.isLoading=false;//加载成功去除动画
-					console.log(res); 
 					this.posts=res.data.data;
-					console.log(this.posts);
 				}).catch(function(err){
 					 //处理返回失败的数据
 					 console.log(err)

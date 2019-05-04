@@ -29,14 +29,13 @@
 				if(typeof page !='number'){
 					switch(page.target.innerText){
 						case '上一页':
-						console.log(page);
 						$('button.currentPage').prev().click();
 						break;
 						case '下一页':
 						$('button.currentPage').next().click();
 						break;
 						case '首页':
-						pagebtns:[1,2,3,4,5,'......'];
+						this.pagebtns=[1,2,3,4,5,'......'];
 						this.changeBtn(1)
 						break;
 						default:
@@ -58,7 +57,6 @@
 					this.pagebtns.unshift(this.pagebtns[0]-1);//现在第一个位置加一
 					this.pagebtns.splice(5,1)//移除最后一个元素
 				}
-				console.log(this.currentPage);
 				this.$emit('handleList',this.currentPage);
 			}
 		}
